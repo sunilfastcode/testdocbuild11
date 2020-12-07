@@ -26,6 +26,10 @@ public class AddressEntity extends AbstractEntity {
     private String address2;
 
     @Basic
+    @Column(name = "address3", nullable = true, length = 50)
+    private String address3;
+
+    @Basic
     @Column(name = "phone", nullable = false, length = 20)
     private String phone;
 

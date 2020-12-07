@@ -34,6 +34,11 @@
 				</column>
 	   	</addColumn>
 	 </changeSet>
+	<changeSet author="fastcode" id="0000000000100003">
+		<addColumn tableName="address">
+			<column name="address3" type="VARCHAR(50)" defaultValue="0"></column>
+		</addColumn>
+	</changeSet>
 	  <changeSet author="fastcode" id="0000000000204">
 	    <addColumn tableName="film_actor">
 	    	<column name="versiono" type="BIGINT" defaultValue="0">
