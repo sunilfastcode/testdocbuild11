@@ -1,4 +1,4 @@
-FROM buildpack-deps:stretch
+FROM alpine:latest
 	
 ### base ###
 RUN yes | unminimize \
