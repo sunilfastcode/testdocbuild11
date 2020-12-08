@@ -1,7 +1,7 @@
 FROM alpine:latest
 	
 ### base ###
-RUN yes | unminimize \
+RUN yes \
     && apt-get install -yq \
         asciidoctor \
         bash-completion \
