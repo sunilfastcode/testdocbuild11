@@ -1,6 +1,9 @@
 FROM alpine:latest
+
+# Install Git
+RUN apt-get update && \
+    apt-get upgrade -y
 	
-### base ###
 RUN yes \
     && apt-get install -yq \
         asciidoctor \
@@ -16,6 +19,7 @@ RUN yes \
         software-properties-common \
         sudo \
         vim \
+		git \
     && locale-gen en_US.UTF-8 \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/*
 ENV LANG=en_US.UTF-8
