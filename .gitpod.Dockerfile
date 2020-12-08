@@ -1,7 +1,7 @@
 FROM openjdk:8u272-jdk
 
 # Install
-RUN apk update && \
+RUN apt-get update && \
     apt-get upgrade -yq && \
     apt-get install -yq git \
 		asciidoctor \
