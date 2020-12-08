@@ -1,4 +1,4 @@
-FROM buildpack-deps:cosmic
+FROM buildpack-deps:stretch
 
 ### base ###
 RUN yes | unminimize \
