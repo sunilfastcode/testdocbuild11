@@ -1,5 +1,8 @@
 FROM alpine:latest
 
+RUN apk update
+RUN apk add
+
 # Install
 RUN apt-get update && \
     apt-get upgrade -yq && \
