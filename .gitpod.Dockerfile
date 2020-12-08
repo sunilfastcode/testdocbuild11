@@ -1,10 +1,7 @@
-FROM alpine:latest
-
-RUN apk update
-RUN apk add
+FROM openjdk:8u272-jdk
 
 # Install
-RUN apt-get update && \
+RUN apk update && \
     apt-get upgrade -yq && \
     apt-get install -yq git \
 		asciidoctor \
@@ -23,25 +20,6 @@ RUN apt-get update && \
     && locale-gen en_US.UTF-8 \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/*
 	
-### base ###
-RUN yes \
-    && apt-get install -yq \
-        asciidoctor \
-        bash-completion \
-        build-essential \
-        htop \
-        jq \
-        less \
-        llvm \
-        locales \
-        man-db \
-        nano \
-        software-properties-common \
-        sudo \
-        vim \
-		git \
-    && locale-gen en_US.UTF-8 \
-    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/*
 ENV LANG=en_US.UTF-8
 
 ### Gitpod user ###
@@ -55,13 +33,7 @@ WORKDIR $HOME
 RUN { echo && echo "PS1='\[\e]0;\u \w\a\]\[\033[01;32m\]\u\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\] \\\$ '" ; } >> .bashrc
 
 
-### Java & Maven ###
-RUN add-apt-repository -yu ppa:webupd8team/java \
-    && echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections \
-    && apt-get install -yq \
-        gradle \
-        oracle-java8-installer \
-    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/*
+### Maven ###
 
 ARG MAVEN_VERSION=3.5.4
 ENV MAVEN_HOME=/usr/share/maven
