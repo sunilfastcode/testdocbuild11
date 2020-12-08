@@ -1,9 +1,26 @@
 FROM alpine:latest
 
-# Install Git
+# Install
 RUN apt-get update && \
-    apt-get upgrade -y
+    apt-get upgrade -yq && \
+    apt-get install -yq git \
+		asciidoctor \
+        bash-completion \
+        build-essential \
+        htop \
+        jq \
+        less \
+        llvm \
+        locales \
+        man-db \
+        nano \
+        software-properties-common \
+        sudo \
+        vim \
+    && locale-gen en_US.UTF-8 \
+    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/*
 	
+### base ###
 RUN yes \
     && apt-get install -yq \
         asciidoctor \
