@@ -5,3 +5,4 @@ image:
 ports:
 - port: 5555
 - port: 4700
+- port: 5556
