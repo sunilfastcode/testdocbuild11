@@ -1,10 +1,9 @@
-FROM openjdk:8u272-jdk
+FROM buildpack-deps:cosmic
 
-# Install
-RUN apt-get update && \
-    apt-get upgrade -yq && \
-    apt-get install -yq git \
-		asciidoctor \
+### base ###
+RUN yes | unminimize \
+    && apt-get install -yq \
+        asciidoctor \
         bash-completion \
         build-essential \
         htop \
@@ -19,7 +18,6 @@ RUN apt-get update && \
         vim \
     && locale-gen en_US.UTF-8 \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/*
-	
 ENV LANG=en_US.UTF-8
 
 ### Gitpod user ###
@@ -33,7 +31,13 @@ WORKDIR $HOME
 RUN { echo && echo "PS1='\[\e]0;\u \w\a\]\[\033[01;32m\]\u\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\] \\\$ '" ; } >> .bashrc
 
 
-### Maven ###
+### Java & Maven ###
+RUN add-apt-repository -yu ppa:webupd8team/java \
+    && echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections \
+    && apt-get install -yq \
+        gradle \
+        oracle-java8-installer \
+    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/*
 
 ARG MAVEN_VERSION=3.5.4
 ENV MAVEN_HOME=/usr/share/maven
@@ -41,6 +45,7 @@ ENV PATH=$MAVEN_HOME/bin:$PATH
 RUN mkdir -p $MAVEN_HOME \
     && curl -fsSL https://apache.osuosl.org/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz \
         | tar -xzvC $MAVEN_HOME --strip-components=1
+
 
 ### Yarn ###
 RUN curl -fsSL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
@@ -52,6 +57,7 @@ RUN curl -fsSL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
 USER gitpod
 # use sudo so that user does not get sudo usage info on (the first) login
 RUN sudo echo "Running 'sudo' for Gitpod: success"
+
 
 ### Node.js ###
 ARG NODE_VERSION=8.14.0
