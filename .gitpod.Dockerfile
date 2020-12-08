@@ -1,5 +1,8 @@
 FROM buildpack-deps:cosmic
 
+RUN apt-get update && \
+    apt-get upgrade -y
+	
 ### base ###
 RUN yes | unminimize \
     && apt-get install -yq \
@@ -16,6 +19,7 @@ RUN yes | unminimize \
         software-properties-common \
         sudo \
         vim \
+		git \
     && locale-gen en_US.UTF-8 \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/*
 ENV LANG=en_US.UTF-8
@@ -68,11 +72,6 @@ RUN curl -fsSL https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install
 
 #Install Angular CLI
 RUN npm install -g @angular/cli@8.3.29
-
-# Install Git
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y git
 
 ### checks ###
 # no root-owned files in the home directory
