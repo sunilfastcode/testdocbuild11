@@ -26,3 +26,5 @@ COPY ./dvdrental.sql /dvdrental.sql
 
 #SHELL ["/bin/sh", "-c"] 
 
+RUN ["psql -U gitpod postgres -c", "'create database dvdrental;'"]
+
