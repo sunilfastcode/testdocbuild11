@@ -12,13 +12,13 @@ COPY ./dvdrental.sql /dvdrental.sql
 #RUN psql -h localhost -d postgres -f /dvdrental.sql
 #RUN psql -h localhost -d postgres
 
-SHELL ["/bin/bash", "-c"] 
+#SHELL ["/bin/bash", "-c"] 
 
-RUN "psql -U gitpod postgres -c 'create database dvdrental;'"
+#RUN "psql -U gitpod postgres -c 'create database dvdrental;'"
 
-RUN "psql -h localhost -U gitpod -d dvdrental -f /dvdrental.sql;"
+#RUN "psql -h localhost -U gitpod -d dvdrental -f /dvdrental.sql;"
 
-RUN psql -U gitpod postgres -c "ALTER ROLE gitpod WITH password 'fastcode'"
+#RUN psql -U gitpod postgres -c "ALTER ROLE gitpod WITH password 'fastcode'"
 
-SHELL ["/bin/sh", "-c"] 
+#SHELL ["/bin/sh", "-c"] 
 
