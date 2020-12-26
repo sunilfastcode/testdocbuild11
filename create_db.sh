@@ -11,6 +11,7 @@ set -e
 #EOSQL
 
 echo "Populatng public schema..."
+sudo chmod +x ./create_db.sh
 psql -d postgres -f /dvdrental.sql
 
 
