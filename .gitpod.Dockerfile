@@ -7,9 +7,9 @@ USER gitpod
 # Install Angular CLI
 RUN npm install -g @angular/cli@8.3.29
 
-COPY ./dvdrental.sql /dvdrental.sql
+#COPY ./dvdrental.sql /dvdrental.sql
 
-COPY ./create_db.sh /create_db.sh
+#COPY ./create_db.sh /create_db.sh
 #RUN sudo chmod +x /create_db.sh
 
 #CMD ["/create_db.sh"]
