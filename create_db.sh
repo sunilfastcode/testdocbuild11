@@ -1,17 +1,17 @@
 #!/bin/bash
 set -e
 
-POSTGRES="psql -U gitpod"
+#POSTGRES="psql -U gitpod"
 
-echo "Creating database: dvdrental"
+#echo "Creating database: dvdrental"
 
-$POSTGRES <<EOSQL
-CREATE DATABASE dvdrental OWNER gitpod;
-ALTER ROLE gitpod WITH password 'fastcode';
-EOSQL
+#$POSTGRES <<EOSQL
+#CREATE DATABASE dvdrental OWNER gitpod;
+#ALTER ROLE gitpod WITH password 'fastcode';
+#EOSQL
 
-echo "Creating schema..."
-psql -d dvdrental -f /dvdrental.sql
+echo "Populatng public schema..."
+psql -d postgres -f /dvdrental.sql
 
 
 #RUN psql -U gitpod postgres -c 'create database dvdrental'
