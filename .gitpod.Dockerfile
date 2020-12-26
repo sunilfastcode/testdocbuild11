@@ -7,7 +7,13 @@ USER gitpod
 # Install Angular CLI
 RUN npm install -g @angular/cli@8.3.29
 
+COPY ./create_db.sh /create_db.sh
 COPY ./dvdrental.sql /dvdrental.sql
+
+RUN chmod +x /create_db.sh
+
+RUN /create_db.sh
+
 #RUN pg_start
 #RUN psql -h localhost -d postgres -f /dvdrental.sql
 #RUN psql -h localhost -d postgres
@@ -26,5 +32,5 @@ COPY ./dvdrental.sql /dvdrental.sql
 
 #SHELL ["/bin/sh", "-c"] 
 
-RUN psql -U gitpod postgres -c "create database dvdrental;"
+#RUN psql -U gitpod postgres -c "create database dvdrental;"
 
