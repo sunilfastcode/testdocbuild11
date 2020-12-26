@@ -9,11 +9,11 @@ RUN npm install -g @angular/cli@8.3.29
 
 COPY ./dvdrental.sql /dvdrental.sql
 
-COPY ./create_db.sh /create_db.sh
-RUN sudo chmod +x /create_db.sh
+#COPY ./create_db.sh /create_db.sh
+#RUN sudo chmod +x /create_db.sh
 
 #CMD ["/create_db.sh"]
-ENTRYPOINT ["source", "/create_db.sh"]
+#ENTRYPOINT ["source", "/create_db.sh"]
 
 
 #RUN pg_start
@@ -28,7 +28,7 @@ ENTRYPOINT ["source", "/create_db.sh"]
 
 # /bin/bash -c "psql -U gitpod postgres -c 'create database dvdrental;'"
 
-#RUN "psql -h localhost -U gitpod -d dvdrental -f /dvdrental.sql;"
+RUN "psql -h localhost -U gitpod -d postgres -f /dvdrental.sql;"
 
 #RUN psql -U gitpod postgres -c "ALTER ROLE gitpod WITH password 'fastcode'"
 
