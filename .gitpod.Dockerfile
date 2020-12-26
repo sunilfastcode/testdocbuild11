@@ -16,10 +16,10 @@ RUN echo "listen_addresses='*'" >> /var/lib/postgresql/data/postgresql.conf
 # expose port
 EXPOSE 5432
 
-USER gitpod
+#USER gitpod
 
 # 
-RUN psql -h localhost -d postgres -a -f /dvdrental.sql
+#RUN psql -h localhost -d postgres -a -f /dvdrental.sql
 
 # Install Angular CLI
 RUN npm install -g @angular/cli@8.3.29
