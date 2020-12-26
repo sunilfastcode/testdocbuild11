@@ -8,4 +8,4 @@ ports:
 - port: 5556
 
 tasks:
-  - init: psql -U gitpod -d postgres -a -f /dvdrental.sql
+  - init: psql -U gitpod -d postgres -a -f /dvdrental.sql;
