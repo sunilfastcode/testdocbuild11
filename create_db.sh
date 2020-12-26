@@ -6,7 +6,7 @@ POSTGRES="psql -U gitpod"
 echo "Creating database: dvdrental"
 
 $POSTGRES <<EOSQL
-CREATE DATABASE dvdrental;
+CREATE DATABASE dvdrental OWNER gitpod;
 ALTER ROLE gitpod WITH password 'fastcode';
 EOSQL
 
