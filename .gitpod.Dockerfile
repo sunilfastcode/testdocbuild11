@@ -28,11 +28,11 @@ RUN npm install -g @angular/cli@8.3.29
 
 # /bin/bash -c "psql -U gitpod postgres -c 'create database dvdrental;'"
 
-#RUN psql -U gitpod -d postgres -a -f /dvdrental.sql
+RUN psql -h localhost -U gitpod -d postgres -a -f /dvdrental.sql
 
 #RUN psql -U gitpod postgres -c "ALTER ROLE gitpod WITH password 'fastcode'"
 
 #SHELL ["/bin/sh", "-c"] 
 
-#RUN psql -U gitpod postgres -c "create database dvdrental;"
+#RUN psql -h localhost -U gitpod postgres -c "create database dvdrental;"
 

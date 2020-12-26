@@ -1,9 +1,5 @@
 image:
   file: .gitpod.Dockerfile
-
-tasks:
-  - init: chmod +x ./create_db.sh
-  - init: ./create_db.sh
   
   # exposed ports
 ports:
