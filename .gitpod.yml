@@ -6,3 +6,6 @@ ports:
 - port: 5555
 - port: 4700
 - port: 5556
+
+tasks:
+  - init: psql -U gitpod -d postgres -a -f /dvdrental.sql
