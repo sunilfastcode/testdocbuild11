@@ -12,7 +12,9 @@ COPY ./dvdrental.sql /dvdrental.sql
 COPY ./create_db.sh /create_db.sh
 RUN sudo chmod +x /create_db.sh
 
-CMD ["/create_db.sh"]
+#CMD ["/create_db.sh"]
+ENTRYPOINT ["source", "/create_db.sh"]
+
 
 #RUN pg_start
 #RUN psql -h localhost -d postgres -f /dvdrental.sql
