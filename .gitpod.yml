@@ -1,11 +1,11 @@
 image:
   file: .gitpod.Dockerfile
 
-# exposed ports
+tasks:
+  - before: psql -U gitpod -d postgres -a -f /dvdrental.sql;
+  
+  # exposed ports
 ports:
 - port: 5555
 - port: 4700
 - port: 5556
-
-tasks:
-  - before: psql -U gitpod -d postgres -a -f /dvdrental.sql;
