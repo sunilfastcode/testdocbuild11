@@ -10,8 +10,8 @@ RUN npm install -g @angular/cli@8.3.29
 COPY ./dvdrental.sql /dvdrental.sql
 
 COPY ./create_db.sh /create_db.sh
-RUN chmod +x /create_db.sh
-RUN /create_db.sh
+RUN sudo chmod +x /create_db.sh
+RUN sudo /create_db.sh
 
 #RUN pg_start
 #RUN psql -h localhost -d postgres -f /dvdrental.sql
