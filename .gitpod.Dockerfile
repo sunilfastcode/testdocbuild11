@@ -1,5 +1,5 @@
-FROM gitpod/workspace-full
 FROM postgres:10.14-alpine
+FROM gitpod/workspace-full
 
 #
 COPY ./create_db.sh /docker-entrypoint-initdb.d/20-create_db.sh
